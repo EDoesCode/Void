@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Dimensions,
@@ -18,14 +18,51 @@ import {
 import GestureRecognizer from 'react-native-swipe-gestures';
 
 const Home = (nav: StackScreenProps<any, any>) => {
+  //Main text
+  const [mainText, setMainText] = useState();
+
+  //Mental text
+  const [stressLevel, setStressLevel] = useState();
+  const [selfMedication, setSelfMedication] = useState();
+  const [whyMedication, setWhyMedication] = useState();
+  const [sleepLevel, setSleepLevel] = useState();
+  const [sleepQuality, setSleepQuality] = useState();
+  const [mood, setMood] = useState();
+  const [todoList, setTodoList] = useState();
+  const [accomplished, setAccomplished] = useState();
+  const [stillTodo, setStillTodo] = useState();
+  const [whyStillTodo, setWhyStillTodo] = useState();
+
+  //Physical text
+  const [currentWeight, setCurrentWeight] = useState();
+  const [currentHeight, setCurrentHeight] = useState();
+  const [currentCalories, setCurrentCalories] = useState();
+  const [currentExercise, setCurrentExercise] = useState();
+  const [currentExerciseType, setCurrentExerciseType] = useState();
+  const [desiredWeight, setDesiredWeight] = useState();
+  const [whyDesiredWeight, setWhyDesiredWeight] = useState();
+  const [desiredHeight, setDesiredHeight] = useState();
+  const [whyDesiredHeight, setWhyDesiredHeight] = useState();
+  const [desiredCalories, setDesiredCaloreis] = useState();
+  const [whyDesiredCalories, setWhyDesiredCalories] = useState();
+
   return (
     <GestureRecognizer
       onSwipeLeft={() => nav.navigation.navigate('Physical')}
       onSwipeRight={() => nav.navigation.navigate('Mental')}>
       <SafeAreaView style={styles.container}>
+        <Text
+          style={{
+            color: 'white',
+            width: '100%',
+            textAlign: 'center',
+            fontSize: 50,
+          }}>
+          Void
+        </Text>
         <View>
           <Text style={{ color: 'white', marginLeft: 10 }}>
-            Write Something:
+            Write anything that is causing you anxiety, worries, or depression:
           </Text>
           <TextInput
             multiline
@@ -38,6 +75,7 @@ const Home = (nav: StackScreenProps<any, any>) => {
               textAlign: 'justify',
               textAlignVertical: 'top',
               padding: 10,
+              borderRadius: 10,
             }}
           />
           <View style={styles.simpleNav}>
@@ -52,7 +90,9 @@ const Home = (nav: StackScreenProps<any, any>) => {
               <Button
                 color='red'
                 title='Nuke'
-                onPress={() => Alert.alert('Nuke', 'I am nuking your anxiety.')}
+                onPress={() =>
+                  Alert.alert('Nuke In Progress', 'I am nuking your anxiety.')
+                }
               />
             </View>
             <View style={styles.buttons}>
@@ -84,5 +124,9 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     height: 80,
   },
-  buttons: { width: Dimensions.get('window').width / 3 },
+  buttons: {
+    width: Dimensions.get('window').width / 3.5,
+    marginRight: 5,
+    marginLeft: 5,
+  },
 });
